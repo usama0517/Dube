@@ -1,0 +1,23 @@
+
+.card{
+  display: inline-block;
+  background-color: rgb(31, 25, 25);
+  color: white;
+  width: 25vw;
+  height: 25vh;
+  margin: 10px;
+  text-align: center;
+}
+.card-holder{
+  margin-left: 5vw;
+
+}
+
+
+@media screen and (max-width: 767px) {
+
+  .card{
+    width: 40vw;
+  }
+
+}

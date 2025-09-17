@@ -1,0 +1,22 @@
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.top-button-holder>h2,.nav>h2{
+    margin-right: 10vw;
+    margin-left: 5vw;
+}
+
+
+.info-displayer{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: antiquewhite;
+}
+.info-displayer>h3{
+    margin-left: 10vw;
+}
