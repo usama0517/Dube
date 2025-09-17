@@ -41,8 +41,5 @@ export default function NewCredit() {
 
    
   ) 
-  function submitter(e : SubmitEvent){
-        e.preventDefault();
 
-    }
 }
