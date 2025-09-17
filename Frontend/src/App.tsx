@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import NewProfile from "./Pages/Forms/Profile/NewProfile"
 import NewCredit from "./Pages/Forms/Credit/NewCredit"
 import EditCredit from "./Pages/Forms/Credit/EditCredit"
-import EditProfile from "./Pages/Forms/Profile/editProfile"
+import EditProfile from "./Pages/Forms/Profile/EditProfile"
 function App() {
   
 

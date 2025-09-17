@@ -9,7 +9,7 @@ export default function EditCredit() {
        </div>
        
     <div className='form-container'>
-      <form onSubmit={(e)=>{submitter(e)}}>
+      <form onSubmit={(e)=>{submitter(e.nativeEvent as SubmitEvent)}}>
         <div className='label-holder'>
         <label>Item</label>
              <input name='fname' type='text' placeholder='Please Enter Item' required />
@@ -41,8 +41,8 @@ export default function EditCredit() {
 
    
   ) 
-  function submitter(e : SubmitEvent){
-        e.preventDefault();
-
-    }
+  function submitter(e: SubmitEvent) {
+  e.preventDefault();
+  // logic here
+}
 }
