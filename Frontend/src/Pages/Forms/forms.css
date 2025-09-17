@@ -1,0 +1,55 @@
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 90vh;
+    width: 50%;
+   
+}
+
+label{
+    font-size: medium;
+    font-weight: bold;
+    margin-right: 50px;
+}
+
+.label-holder{
+    margin: 5vh;
+}
+input{
+    height: 5vh;
+    width: 20vw;
+    font-size: medium;
+}
+.button-holder{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 767px) {
+    form{
+        width: 100%;
+    }
+    .label-holder{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    label{
+        margin-bottom: 10px;
+    }
+    input{
+        width: 60vw;
+        height: 3vh;
+    }
+    .edit-button{
+        width: 20vw;
+        height: 3vh;
+        border: 1px;
+        margin: 25px;
+    }
+    
+}

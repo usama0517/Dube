@@ -1,0 +1,20 @@
+.name-holder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -15px;
+}
+@media screen and (max-width: 767px) {
+    
+
+.label-holder{
+    margin-bottom: -10px;
+    
+}
+.name-holder>h2{
+    margin: 0px;
+}
+.name-holder{
+    margin-bottom: -10vh;
+}
+}
