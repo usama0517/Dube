@@ -19,10 +19,15 @@ export default function CreditDetail() {
 
          <h3>Phone: </h3>
         </div>
-        
+
          <h3>Total: </h3>
     </div>
     
+
+      <div>
+
+        
+      </div>
     </>
   )
 }
