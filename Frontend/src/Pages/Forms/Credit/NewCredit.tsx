@@ -10,7 +10,7 @@ export default function NewCredit() {
        </div>
        
     <div className='form-container'>
-      <form onSubmit={(e)=>{submitter(e)}}>
+      <form >
         <div className='label-holder'>
         <label>Item</label>
              <input name='fname' type='text' placeholder='Please Enter Item' required />
