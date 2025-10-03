@@ -12,6 +12,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/shopKeeper/{cid}/credit")
+@CrossOrigin(origins = "http://localhost:5173",
+        methods = {RequestMethod.GET,RequestMethod.POST,
+        RequestMethod.DELETE})
 public class CreditController {
     private final CustomerService customerService;
 
@@ -28,6 +31,7 @@ public class CreditController {
        s1.getCredits().add(credit);
        customer.getCredits().add(credit);
        credit.setCustomer(customer);
+       credit.setPhoneNumber(customer.getPhoneNumber());
        credit.setShopkeeper(s1);
        return creditRepository.save(credit);
    }
@@ -48,18 +52,23 @@ public class CreditController {
              credit1.setItemName(credit.getItemName());
              credit1.setPrice(credit.getPrice());
              credit1.setQty(credit.getQty());
-             credit1.setTotal(credit.getTotal());
+             credit1.setTotal(credit.getPrice()*credit.getQty());
              return creditRepository.save(credit1);
         }
         else throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Credit could not be found");
 
     }
-    @GetMapping("/{id}/pay")
+    @GetMapping("/pay/{id}")
     public Credit payCredit(@PathVariable("id") Integer id){
         Credit credit = creditRepository.findById(id).orElse(null);
-        credit.setPaid(true);
-        return creditRepository.save(credit);
+        if(credit!=null) {
+            credit.setPaid(true);
+            return creditRepository.save(credit);
+        }
+        else throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Credit could not be found");
+
     }
     @DeleteMapping("/{id}")
      public ResponseEntity<Void> deleteCredit(@PathVariable("id") Integer id){
@@ -67,5 +76,9 @@ public class CreditController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public Credit getCredit(@PathVariable("id") Integer id){
+        return creditRepository.findById(id).orElse(null);
 
+    }
 }

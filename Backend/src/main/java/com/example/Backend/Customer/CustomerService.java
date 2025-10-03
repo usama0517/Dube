@@ -61,7 +61,20 @@ public class CustomerService {
             List<Credit> creditList = c1.getCredits();
             creditList.forEach(z->z.setPaid(true));
             customerRepository.save(c1);
+            return new ResponseEntity<> (HttpStatus.OK);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public Customer updateCustomer(Customer customer,Integer id){
+        Customer c = customerRepository.getById(id);
+        c.setFirstName(customer.getFirstName());
+        c.setLastName(customer.getLastName());
+        c.setPhoneNumber(customer.getPhoneNumber());
+        return customerRepository.save(c);
+    }
+    public ResponseEntity<Void> deleteCustomer(Integer id){
+        customerRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -1,12 +1,17 @@
 
 .card{
   display: inline-block;
-  background-color: rgb(31, 25, 25);
+  background-color: rgb(204, 148, 148);
   color: white;
-  width: 25vw;
-  height: 25vh;
+  width: 25w;
+  max-height: 25vh;
   margin: 10px;
   text-align: center;
+}
+.card>h3{
+  font-size: larger;
+  
+  
 }
 .card-holder{
   margin-left: 5vw;

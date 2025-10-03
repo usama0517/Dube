@@ -1,6 +1,6 @@
 import "./App.css"
 import ViewProfiles from "./Pages/Home/ViewProfiles"
-import CreditDetail from "./Pages/CreditDetail/CreditDetail"
+import CreditDetail from "./Pages/ProfileDetail/ProfileDetail"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import NewProfile from "./Pages/Forms/Profile/NewProfile"
 import NewCredit from "./Pages/Forms/Credit/NewCredit"
@@ -14,11 +14,11 @@ function App() {
     <BrowserRouter>
      <Routes>
         <Route path="/" element={<ViewProfiles/>} />
-        <Route path="/credit/:id" element={<CreditDetail/>}/>
+        <Route path="/profile/:id" element={<CreditDetail/>}/>
         <Route path="/create/profile" element={<NewProfile/>}/>
-        <Route path="/create/credit" element={<NewCredit/>}/>
-        <Route path="/edit/credit" element={<EditCredit/>}/>
-        <Route path="/edit/profile" element={<EditProfile/>}/>
+        <Route path="/profile/:id/create/credit" element={<NewCredit/>}/>
+        <Route path="/profile/:id/edit/credit/:cid" element={<EditCredit/>}/>
+        <Route path="/profile/:id/edit" element={<EditProfile/>}/>
      </Routes>
     </BrowserRouter>
     

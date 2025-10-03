@@ -47,6 +47,10 @@ public ShopKeeper(){
         return customers;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }

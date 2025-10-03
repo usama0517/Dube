@@ -1,9 +1,10 @@
 package com.example.Backend.Customer;
 
-public record CustomerRequestDto(
+public record CustomerResponseDto(
+        Integer id,
         String firstName,
         String lastName,
-        String phoneNumber,
-        Integer shopkeeperId
+        String phoneNumber
+
 ) {
 }

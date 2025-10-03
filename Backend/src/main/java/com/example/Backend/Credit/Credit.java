@@ -112,6 +112,7 @@ public class Credit {
     public Credit(Customer customer, ShopKeeper shopKeeper, ShopKeeper shopkeeper) {
         this.customer = customer;
         this.shopkeeper = shopkeeper;
+        //this.phoneNumber=customer.getPhoneNumber();
 
     }
 }

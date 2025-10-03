@@ -7,6 +7,9 @@ form{
     width: 50%;
    
 }
+.invisible{
+    display: none;
+}
 
 label{
     font-size: medium;
