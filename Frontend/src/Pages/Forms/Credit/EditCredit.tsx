@@ -67,7 +67,7 @@ export default function EditCredit() {
                          }
                     function deleteCredit(){
                      if(window.confirm("Are you Sure You want to Delete customer information")){
-                             axios.delete(`http://localhost:8080/api/shopKeeper/${id}/credit/${cid}"`)
+                             axios.delete(`http://localhost:8080/api/shopKeeper/${id}/credit/${cid}`)
                              .then(res=>{
                                if(res.status===HttpStatusCode.Ok){
                                  alert("Deleted Succsessfully")
