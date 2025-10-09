@@ -14,6 +14,14 @@ interface Credit{
        total:number
        paid:boolean
 }
+interface ImportMetaEnv {
+  readonly VITE_API_URL: string;
+  
+}
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+          
 
 export default function CreditDetail() {
  
@@ -24,9 +32,9 @@ export default function CreditDetail() {
            const [change , setChange] = useState<number>(0)
            const {id} = useParams();
            const nav = useNavigate();
-          
+           const backApi:ImportMeta = import.meta.env.VITE_API_URL;
            function fetchProfile(){
-                  axios.get(`http://localhost:8080/api/1/customer/${id}`)
+                  axios.get(`${backApi}/1/customer/${id}`)
                   .then(response=>{
                     setFirstname(response.data.firstName)
                     setLastname(response.data.lastName)
@@ -46,7 +54,7 @@ export default function CreditDetail() {
    }
 
    function payCredit(){
-    axios.get(`http://localhost:8080/api/1/customer/${id}/pay-all-credits`)
+    axios.get(`${backApi}/1/customer/${id}/pay-all-credits`)
     .then(res=>{
       if(res.status===HttpStatusCode.Ok){
         alert("all Credits are paid")

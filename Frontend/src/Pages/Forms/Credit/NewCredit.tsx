@@ -4,8 +4,17 @@ import '../forms.css'
 import "./newCredit.css"
 import axios, { HttpStatusCode } from 'axios'
 import { useParams } from 'react-router-dom'
+interface ImportMetaEnv {
+  readonly VITE_API_URL: string;
+  
+}
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+          
 
-export default function NewCredit() {
+export default function NewCredit() { 
+        const backApi:ImportMeta = import.meta.env.VITE_API_URL;
          const {id}= useParams();
          const [itemName,setItemName]=useState<string>();
          const [fname , setFname]= useState<string>()
@@ -13,7 +22,7 @@ export default function NewCredit() {
          const [price,setPrice] = useState<number>(0)
          const [qty,setQty] = useState<number>(1)
          function fetchProfile() {
-      axios.get(`http://localhost:8080/api/1/customer/${id}`)
+      axios.get(`${backApi}/1/customer/${id}`)
                   .then(response=>{
                     setFname(response.data.firstName)
                     setLname(response.data.lastName)
@@ -23,7 +32,7 @@ export default function NewCredit() {
           }
 
           function createCredit(){
-              axios.post(`http://localhost:8080/api/shopKeeper/${id}/credit`,
+              axios.post(`${backApi}/shopKeeper/${id}/credit`,
                 {
                   itemName,
                   price,

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/{sid}/customer")
-@CrossOrigin(origins = "http://localhost:5173", methods = {RequestMethod.GET,RequestMethod.POST})
+
 public class CustomerController {
 
 

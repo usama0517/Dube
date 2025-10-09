@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function ViewProfiles() {
+
  interface customers{
          id: number,
         firstName: string,
@@ -12,7 +13,15 @@ export default function ViewProfiles() {
         phoneNumber: string
  }
 
-   const [array,setArray] = useState<customers[]>([]);
+   interface ImportMetaEnv {
+  readonly VITE_API_URL: string;
+  
+}
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+           const backApi:ImportMeta = import.meta.env.VITE_API_URL;
+   const [array,setArray] = useState<customers[]>();
     const nav = useNavigate();
     function goToNewProfile(){
       nav("/create/profile")
@@ -21,8 +30,8 @@ export default function ViewProfiles() {
     useEffect(
       ()=>{
          function featcher (){
-      console.log("I am Fetching.....")
-        axios.get("http://localhost:8080/api/1/customer")
+      console.log("I am Fetching.....",backApi)
+        axios.get(`${backApi}/1/customer`)
         .then(response=>{
           console.log(response.data);
            setArray(response.data);
@@ -45,7 +54,7 @@ export default function ViewProfiles() {
       </div>
       
       { array ?
-      array?.map((val)=>(
+      array.map((val)=>(
        <Link to={`profile/${val.id}`} key={val.id}>
        <Card
        firstName={val.firstName}

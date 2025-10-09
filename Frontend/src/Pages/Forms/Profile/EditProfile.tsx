@@ -3,15 +3,24 @@ import { useEffect, useState } from "react"
 import {  useNavigate, useParams } from "react-router-dom";
 import Header from "../../../component/Header";
 
+interface ImportMetaEnv {
+  readonly VITE_API_URL: string;
+  
+}
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+           
 
 export default function EditProfile() {
+           const backApi:ImportMeta = import.meta.env.VITE_API_URL;
            const [firstName,setFirstname] = useState<string>();
            const [lastName,setLastname] = useState<string>();
            const [phoneNumber, setPhoneNumber] = useState<string>();
            const {id} = useParams();
            const nav = useNavigate();
            function fetchProfile(){
-                  axios.get(`http://localhost:8080/api/1/customer/${id}`)
+                  axios.get(`${backApi}/1/customer/${id}`)
                   .then(response=>{
                     setFirstname(response.data.firstName)
                     setLastname(response.data.lastName)
@@ -26,7 +35,7 @@ export default function EditProfile() {
               )
               function updateProfile(){
                 if(window.confirm("Are you Sure You want to update customer information")){
-                  axios.post(`http://localhost:8080/api/1/customer/${id}`,
+                  axios.post(`${backApi}/1/customer/${id}`,
                     {firstName,lastName,phoneNumber}
                   )
                   .then(res=>{
@@ -44,7 +53,7 @@ export default function EditProfile() {
               }
          function deleteProfile(){
           if(window.confirm("Are you Sure You want to Delete customer information")){
-                  axios.delete(`http://localhost:8080/api/1/customer/${id}`)
+                  axios.delete(`${backApi}/1/customer/${id}`)
                   .then(res=>{
                     if(res.status===HttpStatusCode.Ok){
                       alert("Deleted Succsessfully")

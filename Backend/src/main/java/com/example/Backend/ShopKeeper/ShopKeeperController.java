@@ -12,9 +12,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/shopkeeper")
-@CrossOrigin(origins = "http://localhost:5173",
-        methods = {RequestMethod.GET,
-                RequestMethod.POST})
+
 public class ShopKeeperController {
    private final ShopKeeperService shopKeeperService;
     ResponseDto toResponseDto(ShopKeeper s){

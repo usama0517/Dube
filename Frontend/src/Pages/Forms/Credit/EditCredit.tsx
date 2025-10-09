@@ -4,8 +4,17 @@ import {  useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios, { HttpStatusCode } from 'axios';
 
-export default function EditCredit() {
+interface ImportMetaEnv {
+  readonly VITE_API_URL: string;
+  
+}
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+           
 
+export default function EditCredit() {
+            const backApi:ImportMeta = import.meta.env.VITE_API_URL;
            const [itemName,setItemName] = useState<string>();
                       const [price,setPrice] = useState<number>(0);
                       const [qty, setQty] = useState<number>(1);
@@ -14,7 +23,7 @@ export default function EditCredit() {
                       const {id} = useParams();
                       
                       function fetchCredit(){
-                             axios.get(`http://localhost:8080/api/shopKeeper/${id}/credit/${cid}`)
+                             axios.get(`${backApi}/shopKeeper/${id}/credit/${cid}`)
                              .then(response=>{
                                setItemName(response.data.itemName)
                                setPrice(response.data.price)
@@ -30,7 +39,7 @@ export default function EditCredit() {
                          )
                          function updateCredit(){
                            if(window.confirm("Are you Sure You want to update credit information")){
-                             axios.post(`http://localhost:8080/api/shopKeeper/${id}/credit/${cid}`,
+                             axios.post(`${backApi}/shopKeeper/${id}/credit/${cid}`,
                                {price,qty,itemName}
                              )
                              .then(res=>{
@@ -48,7 +57,7 @@ export default function EditCredit() {
                          }
                           function payCredit(){
                            if(window.confirm("Are you Sure You want to Pay credit ")){
-                             axios.get(`http://localhost:8080/api/shopKeeper/${id}/credit/pay/${cid}` )
+                             axios.get(`${backApi}/shopKeeper/${id}/credit/pay/${cid}` )
                              .then(res=>{
                                if(res.data){
                                  alert("Paid Succsessfully")
@@ -67,7 +76,7 @@ export default function EditCredit() {
                          }
                     function deleteCredit(){
                      if(window.confirm("Are you Sure You want to Delete customer information")){
-                             axios.delete(`http://localhost:8080/api/shopKeeper/${id}/credit/${cid}`)
+                             axios.delete(`${backApi}/shopKeeper/${id}/credit/${cid}`)
                              .then(res=>{
                                if(res.status===HttpStatusCode.Ok){
                                  alert("Deleted Succsessfully")

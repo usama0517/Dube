@@ -12,9 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/shopKeeper/{cid}/credit")
-@CrossOrigin(origins = "http://localhost:5173",
-        methods = {RequestMethod.GET,RequestMethod.POST,
-        RequestMethod.DELETE})
+
 public class CreditController {
     private final CustomerService customerService;
 

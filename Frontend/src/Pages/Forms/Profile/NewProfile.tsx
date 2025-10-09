@@ -2,13 +2,23 @@ import '../forms.css'
 import Header from '../../../component/Header'
 import { useState } from 'react'
 import axios, { HttpStatusCode } from 'axios';
+  
+interface ImportMetaEnv {
+  readonly VITE_API_URL: string;
+  
+}
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+     
 
 export default function NewProfile() {
+    const backApi:ImportMeta = import.meta.env.VITE_API_URL;
     const [firstname,setFirstname] = useState<string>();
     const [lastname,setLastname] = useState<string>();
     const [phoneNum,setPhoneNum] = useState<string>();
     function createProfile(){
-      axios.post('http://localhost:8080/api/1/customer',{
+      axios.post(`${backApiS}/1/customer`,{
         firstName:firstname,
         lastName:lastname,
         phoneNumber:phoneNum
