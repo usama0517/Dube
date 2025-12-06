@@ -18,7 +18,7 @@ export default function NewProfile() {
     const [lastname,setLastname] = useState<string>();
     const [phoneNum,setPhoneNum] = useState<string>();
     function createProfile(){
-      axios.post(`${backApiS}/1/customer`,{
+      axios.post(`${backApi}/1/customer`,{
         firstName:firstname,
         lastName:lastname,
         phoneNumber:phoneNum
